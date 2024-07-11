@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from unittest.mock import Mock, patch
 
 from booking_scheduler import BookingScheduler
-from schedule import Customer, Schedule
+from schedule import Schedule
 
 CAPACITY_PER_HOUR = 3
 UNDER_CAPACITY = 1
@@ -86,7 +86,6 @@ class BookingSchedulerTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             new_schdule = Schedule(ON_THE_HOUR, UNDER_CAPACITY, CUSTOMER_WITH_EMAIL)
             self.booking_scheduler.add_schedule(new_schdule)
-            self.fail()
 
     @patch.object(BookingScheduler, "get_now", return_value=datetime.strptime("2021/06/03 17:00", "%Y/%m/%d %H:%M"))
     def test_현재날짜가_일요일이_아닌경우_예약가능(self, mock):
