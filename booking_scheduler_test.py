@@ -16,16 +16,6 @@ NOT_ON_THE_HOUR = datetime.strptime("2021/03/06 09:35", "%Y/%m/%d %H:%M")
 ON_THE_HOUR = datetime.strptime("2021/03/06 09:00", "%Y/%m/%d %H:%M")
 
 
-class TestableBookingScheduler(BookingScheduler):
-
-    def __init__(self, capacity_per_hour, date_time: str):
-        super().__init__(capacity_per_hour)
-        self._date_time = date_time
-
-    def get_now(self):
-        return datetime.strptime(self._date_time, "%Y/%m/%d %H:%M")
-
-
 class BookingSchedulerTest(unittest.TestCase):
 
     def setUp(self):
